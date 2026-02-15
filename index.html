@@ -1,52 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Exercise Routine</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exercise App</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="home">
-  <div class="card" onclick="loadSession('Morning')">
-    <h2>Morning</h2>
-    <button onclick="openModal('Morning'); event.stopPropagation()">Upload</button>
+<header>
+  <h1>Exercise Tracker</h1>
+  <button id="darkToggle">🌙</button>
+</header>
+
+<div class="container">
+
+  <div class="card" data-category="morning">
+    <h2>🟢 Morning</h2>
+    <p>Start your day strong</p>
+    <button class="openBtn">Open</button>
+    <button class="uploadBtn hidden">Upload</button>
   </div>
 
-  <div class="card" onclick="loadSession('Evening')">
-    <h2>Evening</h2>
-    <button onclick="openModal('Evening'); event.stopPropagation()">Upload</button>
+  <div class="card" data-category="evening">
+    <h2>🔵 Evening</h2>
+    <p>End your day energized</p>
+    <button class="openBtn">Open</button>
+    <button class="uploadBtn hidden">Upload</button>
   </div>
+
 </div>
 
-<div id="workout" class="hidden">
-  <div id="exercise-container"></div>
-</div>
+<nav class="bottom-nav">
+  <button onclick="goHome()">Home</button>
+  <button onclick="goWorkout()">Workout</button>
+  <button onclick="showHistory()">History</button>
+</nav>
 
 <div id="modal" class="modal hidden">
   <div class="modal-content">
     <h3>Add Exercise</h3>
-    <form id="exerciseForm">
-      <input type="hidden" id="sessionType">
-
-      <input type="text" id="exercise_name" placeholder="Exercise Name" required>
-      <input type="text" id="gif_url" placeholder="GIF URL" required>
-      <input type="number" id="reps" placeholder="Reps">
-      
-      <select id="has_timer">
-        <option value="No">No Timer</option>
-        <option value="Yes">Has Timer</option>
-      </select>
-
-      <input type="number" id="timer_duration" placeholder="Timer (seconds)">
-      <button type="submit">Submit</button>
-      <button type="button" onclick="closeModal()">Cancel</button>
-    </form>
+    <input id="exName" placeholder="Exercise Name">
+    <input id="gifUrl" placeholder="GIF URL">
+    <input id="reps" type="number" placeholder="Reps">
+    <label>
+      <input type="checkbox" id="hasTimer"> Has Timer
+    </label>
+    <input id="timerSeconds" type="number" placeholder="Seconds" class="hidden">
+    <input id="order" type="number" placeholder="Order">
+    <button onclick="submitExercise()">Submit</button>
+    <button onclick="closeModal()">Cancel</button>
   </div>
 </div>
 
-<div id="loading" class="hidden">Loading...</div>
-
+<script src="api.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

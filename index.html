@@ -37,21 +37,29 @@
   <button onclick="showHistory()">History</button>
 </nav>
 
-<div id="modal" class="modal hidden">
+<!-- Add Exercise Modal -->
+<div id="modal" class="modal">
   <div class="modal-content">
     <h3>Add Exercise</h3>
-    <input id="exName" placeholder="Exercise Name">
-    <input id="gifUrl" placeholder="GIF URL">
+
+    <input id="exName" type="text" placeholder="Exercise Name">
+    <input id="gifUrl" type="text" placeholder="GIF URL">
     <input id="reps" type="number" placeholder="Reps">
+
     <label>
-      <input type="checkbox" id="hasTimer"> Has Timer
+      <input id="hasTimer" type="checkbox">
+      Has Timer
     </label>
-    <input id="timerSeconds" type="number" placeholder="Seconds" class="hidden">
+
+    <input id="timerSeconds" type="number" placeholder="Timer seconds" class="hidden">
+
     <input id="order" type="number" placeholder="Order">
+
     <button onclick="submitExercise()">Submit</button>
     <button onclick="closeModal()">Cancel</button>
   </div>
 </div>
+
 
 <script src="api.js"></script>
 <script src="script.js"></script>

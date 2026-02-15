@@ -133,3 +133,33 @@ function closeModal() {
   modal.classList.remove("active");
   document.body.style.overflow = "auto";
 }
+
+async function submitExercise() {
+
+  const data = {
+    category: modal.dataset.category,
+    exercise_name: document.getElementById("exName").value,
+    gif_url: document.getElementById("gifUrl").value,
+    reps: document.getElementById("reps").value,
+    has_timer: document.getElementById("hasTimer").checked,
+    timer_seconds: document.getElementById("timerSeconds").value,
+    order: document.getElementById("order").value
+  };
+
+  await addExercise(data);
+
+  closeModal();  // 🔥 guaranteed close
+}
+
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    closeModal();
+  }
+});
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    closeModal();
+  }
+});
+

@@ -120,3 +120,16 @@ function goWorkout(){ location.href="workout.html"; }
 function toggleDark(){
   document.body.classList.toggle("dark");
 }
+
+const modal = document.getElementById("modal");
+
+function openModal(category) {
+  modal.classList.add("active");
+  modal.dataset.category = category;
+  document.body.style.overflow = "hidden"; // stop background scroll
+}
+
+function closeModal() {
+  modal.classList.remove("active");
+  document.body.style.overflow = "auto";
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Exercise Routine</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="home">
+  <div class="card" onclick="loadSession('Morning')">
+    <h2>Morning</h2>
+    <button onclick="openModal('Morning'); event.stopPropagation()">Upload</button>
+  </div>
+
+  <div class="card" onclick="loadSession('Evening')">
+    <h2>Evening</h2>
+    <button onclick="openModal('Evening'); event.stopPropagation()">Upload</button>
+  </div>
+</div>
+
+<div id="workout" class="hidden">
+  <div id="exercise-container"></div>
+</div>
+
+<div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h3>Add Exercise</h3>
+    <form id="exerciseForm">
+      <input type="hidden" id="sessionType">
+
+      <input type="text" id="exercise_name" placeholder="Exercise Name" required>
+      <input type="text" id="gif_url" placeholder="GIF URL" required>
+      <input type="number" id="reps" placeholder="Reps">
+      
+      <select id="has_timer">
+        <option value="No">No Timer</option>
+        <option value="Yes">Has Timer</option>
+      </select>
+
+      <input type="number" id="timer_duration" placeholder="Timer (seconds)">
+      <button type="submit">Submit</button>
+      <button type="button" onclick="closeModal()">Cancel</button>
+    </form>
+  </div>
+</div>
+
+<div id="loading" class="hidden">Loading...</div>
+
+<script src="script.js"></script>
+</body>
+</html>
